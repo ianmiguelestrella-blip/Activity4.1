@@ -70,7 +70,7 @@ INSERT INTO owners (ownerid, ofirstname, olastname, address, phone, email) VALUE
 INSERT INTO animals (animalid, name, species, breed, dateofbirth, gender, color, ownerid) VALUES
 (1, 'Taeri', 'Dog', 'Golden Retriever', '2018-05-12', 'Female', 'Yellow', 1),
 (2, 'Browny', 'Dog', 'Chow chow', '2019-03-08', 'Male', 'Brown', 2),
-(3, 'Mow', 'Dog', 'Beagle', '2020-07-22', 'Male', 'White', 3),
+(3, 'Whiskers', 'Cat', 'Persian', '2020-07-22', 'Male', 'White', 3),
 (4, 'Simba', 'Cat', 'Persian', '2017-11-30', 'Female', 'White', 4),
 (5, 'Leo', 'Dog', 'German Shepherd', '2016-09-15', 'Male', 'Black', 5),
 (6, 'Carrot', 'Dog', 'Shitsu', '2021-01-10', 'Male', 'Gray', 6),
@@ -80,9 +80,9 @@ INSERT INTO animals (animalid, name, species, breed, dateofbirth, gender, color,
 (10, 'Buddy', 'Dog', 'Golden Retriever', '2015-12-01', 'Male', 'Golden', 10);
 INSERT INTO appointments (appointid, animalid, appointdate, reason) VALUES
 (1, 1, '2025-01-10', 'Annual check-up'),
-(2, 2, '2025-01-12', 'Vaccination'),
+(2, 3, '2025-01-12', 'Vaccination'),
 (3, 3, '2025-01-15', 'cold  treatment'),
-(4, 4, '2025-01-18', 'diarrhea'),
+(4, 3, '2025-01-18', 'diarrhea'),
 (5, 5, '2025-01-20', 'Colds'),
 (6, 6, '2025-01-22', 'Fever'),
 (7, 7, '2025-01-25', 'Follow-up visit'),
@@ -158,3 +158,10 @@ WHERE animalid IN (
         WHERE firstname = 'Maria'
     )
 );
+
+SELECT a.name
+FROM animals a
+JOIN appoinments ap ON a.animalid= ap.animalid
+GROUP BY a.name
+ORDER BY COUNT(ap.appointed) DESC
+LIMIT 1;
