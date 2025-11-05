@@ -73,10 +73,10 @@ INSERT INTO animals (animalid, name, species, breed, dateofbirth, gender, color,
 (3, 'Mow', 'Dog', 'Beagle', '2020-07-22', 'Male', 'White', 3),
 (4, 'Simba', 'Cat', 'Persian', '2017-11-30', 'Female', 'White', 4),
 (5, 'Leo', 'Dog', 'German Shepherd', '2016-09-15', 'Male', 'Black', 5),
-(6, 'Carrot', 'Rabbit', 'Netherland Dwarf', '2021-01-10', 'Male', 'Gray', 6),
+(6, 'Carrot', 'Dog', 'Shitsu', '2021-01-10', 'Male', 'Gray', 6),
 (7, 'Mawi', 'Dog', 'Poodle', '2018-04-05', 'Female', 'Cream', 7),
 (8, 'Yanah', 'Cat', 'Persian', '2019-06-18', 'Male', 'Brown', 8),
-(9, 'Coco', 'Bird', 'Cockatiel', '2020-02-25', 'Female', 'Yellow and Gray',9),
+(9, 'Coco', 'Cat', 'Persian', '2020-02-25', 'Female', 'Yellow and Gray',9),
 (10, 'Buddy', 'Dog', 'Golden Retriever', '2015-12-01', 'Male', 'Golden', 10);
 INSERT INTO appointments (appointid, animalid, appointdate, reason) VALUES
 (1, 1, '2025-01-10', 'Annual check-up'),
@@ -140,3 +140,5 @@ SET lastname = 'Reyes-Gonzales'
 WHERE firstname = 'Dr.Sofia';
 
 
+SELECT DISTINCT species
+FROM animals;
