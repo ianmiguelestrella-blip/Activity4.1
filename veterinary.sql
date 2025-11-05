@@ -62,7 +62,7 @@ INSERT INTO owners (ownerid, ofirstname, olastname, address, phone, email) VALUE
 (3, 'Carlos', 'Ramiro', '789 Monimento Rd, Tanauan', '09191234567', 'carlos.ramiro@example.com'),
 (4, 'Shai', 'Lopez', '321 Putol St, Lipa City', '09201234567', 'shai.lopez@example.com'),
 (5, 'Ron', 'Garcia', '654 Malaya Ave, Batangas City', '09211234567', 'ron.garcia@example.com'),
-(6, 'Mae', 'Torres', '987 Malvar St, Tanauan', '09221234567', 'mae.torres@example.com'),
+(6, 'Maria', 'Torres', '987 Malvar St, Tanauan', '09221234567', 'maria.torres@example.com'),
 (7, 'Miguel', 'Ramos', '159 Mabini St, Lipa City', '09231234567', 'miguel.ramos@example.com'),
 (8, 'Sofia', 'Fernandez', '753 Rizal Ave, Batangas City', '09241234567', 'sofia.fernandez@example.com'),
 (9, 'Diego', 'Martinez', '852 Bonifacio Rd, Tanauan', '09251234567', 'diego.martinez@example.com'),
@@ -81,9 +81,9 @@ INSERT INTO animals (animalid, name, species, breed, dateofbirth, gender, color,
 INSERT INTO appointments (appointid, animalid, appointdate, reason) VALUES
 (1, 1, '2025-01-10', 'Annual check-up'),
 (2, 2, '2025-01-12', 'Vaccination'),
-(3, 3, '2025-01-15', 'allergy treatment'),
-(4, 4, '2025-01-18', 'Influenza'),
-(5, 5, '2025-01-20', 'Cough'),
+(3, 3, '2025-01-15', 'cold  treatment'),
+(4, 4, '2025-01-18', 'diarrhea'),
+(5, 5, '2025-01-20', 'Colds'),
 (6, 6, '2025-01-22', 'Fever'),
 (7, 7, '2025-01-25', 'Follow-up visit'),
 (8, 8, '2025-01-28', 'Eye check-up'),
@@ -147,3 +147,14 @@ SELECT SUM(totalamount) AS total_sales
 FROM invoices;
 
 
+SELECT COUNT(*) AS total_appointments
+FROM appointments
+WHERE animalid IN (
+    SELECT animalid
+    FROM animals
+    WHERE ownerid = (
+        SELECT ownerid
+        FROM owners
+        WHERE firstname = 'Maria'
+    )
+);
