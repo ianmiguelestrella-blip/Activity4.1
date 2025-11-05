@@ -29,12 +29,13 @@ CREATE TABLE appointments (
 );
 CREATE TABLE doctors (
     doctorid INT PRIMARY KEY,
-    firstname VARCHAR(150),
-    lastname VARCHAR(150),
-    specialization VARCHAR(100),
-    contactnumber VARCHAR(20),
+    dfirstname VARCHAR(150),
+    dlastname VARCHAR(150),
+    speciality VARCHAR(100),
+    phone VARCHAR(20),
     email VARCHAR(100)
 );
+
 CREATE TABLE invoices (
     invoiceid INT PRIMARY KEY,
     appointid INT,
@@ -85,3 +86,14 @@ INSERT INTO appointments (appointid, animalid, appointdate, reason) VALUES
 (8, 8, '2025-01-28', 'Eye check-up'),
 (9, 9, '2025-01-30', 'Medical'),
 (10, 10, '2025-02-02', 'X-ray');
+INSERT INTO doctors (doctorid, firstname, lastname, specialization, contactnumber, email) VALUES
+(1, 'Maria', 'Santos', 'General Veterinarian', '987-654-3210', 'maria@example.com'),
+(2, 'Antonio', 'Gonzales', 'Feline Specialist', '555-123-4567', 'antonio@example.com'),
+(3, 'Felipe', 'Luna', 'Orthopedic Specialist', '111-222-3333', 'felipe@example.com'),
+(4, 'Sofia', 'Reyes', 'Dermatology Specialist', '999-888-7777', 'sofia@example.com'),
+(5, 'Luis', 'Torres', 'Surgery Specialist', '123-555-7777', 'luis@example.com'),
+(6, 'Carmen', 'Fernandez', 'Ophthalmology Specialist', '333-222-1111', 'carmen@example.com'),
+(7, 'Miguel', 'Ramirez', 'Exotic Animal Specialist', '444-666-8888', 'miguel@example.com'),
+(8, 'Isabella', 'Cruz', 'Dental Specialist', '777-444-2222', 'isabella@example.com'),
+(9, 'Javier', 'Morales', 'Cardiology Specialist', '666-999-0000', 'javier@example.com'),
+(10, 'Elena', 'Navarro', 'Emergency Care Specialist', '888-777-6666', 'elena@example.com');
