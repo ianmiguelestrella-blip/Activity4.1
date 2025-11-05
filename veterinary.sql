@@ -38,10 +38,11 @@ CREATE TABLE doctors (
 CREATE TABLE invoices (
     invoiceid INT PRIMARY KEY,
     appointid INT,
-    amount DECIMAL(10,2),
-    paymenttime TIME,
+    totalamount DECIMAL(10,2),
+    paymentdate TIME,
     FOREIGN KEY (appointid) REFERENCES appointments(appointid)
 );
+
 
 CREATE TABLE medicalrecords (
     recordid INT PRIMARY KEY,
@@ -70,7 +71,7 @@ INSERT INTO animals (animalid, name, species, breed, dateofbirth, gender, color,
 (1, 'Taeri', 'Dog', 'Golden Retriever', '2018-05-12', 'Female', 'Yellow', 1),
 (2, 'Browny', 'Dog', 'Chow chow', '2019-03-08', 'Male', 'Brown', 2),
 (3, 'Mow', 'Dog', 'Beagle', '2020-07-22', 'Male', 'White', 3),
-(4, 'Kitty', 'Cat', 'Persian', '2017-11-30', 'Female', 'White', 4),
+(4, 'Simba', 'Cat', 'Persian', '2017-11-30', 'Female', 'White', 4),
 (5, 'Leo', 'Dog', 'German Shepherd', '2016-09-15', 'Male', 'Black', 5),
 (6, 'Carrot', 'Rabbit', 'Netherland Dwarf', '2021-01-10', 'Male', 'Gray', 6),
 (7, 'Mawi', 'Dog', 'Poodle', '2018-04-05', 'Female', 'Cream', 7),
@@ -99,7 +100,7 @@ INSERT INTO doctors (doctorid, firstname, lastname, specialization, contactnumbe
 (8, 'Isabella', 'Cruz', 'Dental Specialist', '777-444-2222', 'isabella@example.com'),
 (9, 'Javier', 'Morales', 'Cardiology Specialist', '666-999-0000', 'javier@example.com'),
 (10, 'Elena', 'Navarro', 'Emergency Care Specialist', '888-777-6666', 'elena@example.com');
-INSERT INTO invoices (invoiceid, appointid, amount, paymenttime) VALUES
+INSERT INTO invoices (invoiceid, appointid,totalamount, paymentdate) VALUES
 (1, 1, 50.00, '09:30:00'),
 (2, 2, 75.00, '14:15:00'),
 (3, 3, 100.00, '11:00:00'),
@@ -128,3 +129,8 @@ ADD COLUMN registereddate DATE;
 ALTER TABLE invoices
 RENAME COLUMN paymentdate To paymenttime;
 
+DELETE FROM appointments
+WHERE animalid = (
+    SELECT animalid FROM animals
+    WHERE name = 'Simba'
+);
