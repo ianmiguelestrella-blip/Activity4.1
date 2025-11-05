@@ -134,3 +134,9 @@ WHERE animalid = (
     SELECT animalid FROM animals
     WHERE name = 'Simba'
 );
+
+UPDATE doctors
+SET lastname = 'Reyes-Gonzales'
+WHERE firstname = 'Dr.Sofia';
+
+
