@@ -29,8 +29,7 @@ CREATE TABLE appointments (
 );
 CREATE TABLE doctors (
     doctorid INT PRIMARY KEY,
-    dfirstname VARCHAR(150),
-    dlastname VARCHAR(150),
+    dfirstname VARCHAR(150),    dlastname VARCHAR(150),
     speciality VARCHAR(100),
     phone VARCHAR(20),
     email VARCHAR(100)
@@ -40,9 +39,10 @@ CREATE TABLE invoices (
     invoiceid INT PRIMARY KEY,
     appointid INT,
     amount DECIMAL(10,2),
-    issuedate DATE,
+    paymenttime TIME,
     FOREIGN KEY (appointid) REFERENCES appointments(appointid)
 );
+
 CREATE TABLE medicalrecords (
     recordid INT PRIMARY KEY,
     animalid INT,
@@ -97,3 +97,14 @@ INSERT INTO doctors (doctorid, firstname, lastname, specialization, contactnumbe
 (8, 'Isabella', 'Cruz', 'Dental Specialist', '777-444-2222', 'isabella@example.com'),
 (9, 'Javier', 'Morales', 'Cardiology Specialist', '666-999-0000', 'javier@example.com'),
 (10, 'Elena', 'Navarro', 'Emergency Care Specialist', '888-777-6666', 'elena@example.com');
+INSERT INTO invoices (invoiceid, appointid, amount, paymenttime) VALUES
+(1, 1, 50.00, '09:30:00'),
+(2, 2, 75.00, '14:15:00'),
+(3, 3, 100.00, '11:00:00'),
+(4, 4, 200.00, '13:45:00'),
+(5, 5, 80.00, '10:30:00'),
+(6, 6, 30.00, '15:00:00'),
+(7, 7, 75.00, '09:15:00'),
+(8, 8, 150.00, '16:30:00'),
+(9, 9, 60.00, '14:45:00'),
+(10, 10, 40.00, '11:30:00');
