@@ -53,3 +53,14 @@ CREATE TABLE medicalrecords (
     FOREIGN KEY (animalid) REFERENCES animals(animalid),
     FOREIGN KEY (doctorid) REFERENCES doctors(doctorid)
 );
+INSERT INTO owners (ownerid, ofirstname, olastname, address, phone, email) VALUES
+(1, 'Juan', 'Dela Cruz', '123 Narra St, Lipa City', '09171234567', 'juan.dc@example.com'),
+(2, 'Ben', 'Reyes', '456 Manga Ave, Batangas City', '09181234567', 'ben.reyes@example.com'),
+(3, 'Carlos', 'Ramiro', '789 Monimento Rd, Tanauan', '09191234567', 'carlos.ramiro@example.com'),
+(4, 'Shai', 'Lopez', '321 Putol St, Lipa City', '09201234567', 'shai.lopez@example.com'),
+(5, 'Ron', 'Garcia', '654 Malaya Ave, Batangas City', '09211234567', 'ron.garcia@example.com'),
+(6, 'Mae', 'Torres', '987 Malvar St, Tanauan', '09221234567', 'mae.torres@example.com'),
+(7, 'Miguel', 'Ramos', '159 Mabini St, Lipa City', '09231234567', 'miguel.ramos@example.com'),
+(8, 'Sofia', 'Fernandez', '753 Rizal Ave, Batangas City', '09241234567', 'sofia.fernandez@example.com'),
+(9, 'Diego', 'Martinez', '852 Bonifacio Rd, Tanauan', '09251234567', 'diego.martinez@example.com'),
+(10, 'Conan', 'Gomez', '951 Katipunan St, Lipa City', '09261234567', 'conan.gomez@example.com');
