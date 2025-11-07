@@ -29,9 +29,10 @@ CREATE TABLE appointments (
 );
 CREATE TABLE doctors (
     doctorid INT PRIMARY KEY,
-    dfirstname VARCHAR(150),    dlastname VARCHAR(150),
-    speciality VARCHAR(100),
-    phone VARCHAR(20),
+    dfirstname VARCHAR(150),   
+    dlastname VARCHAR(150),
+    specialization VARCHAR(100),
+    contactnumber VARCHAR(20),
     email VARCHAR(100)
 );
 
@@ -47,7 +48,7 @@ CREATE TABLE invoices (
 CREATE TABLE medicalrecords (
     recordid INT PRIMARY KEY,
     animalid INT,
-    recorddate DATETIME,
+    recorddate TIMESTAMP,
     doctorid INT,
     diagnosis VARCHAR(250),
     prescription VARCHAR(100),
