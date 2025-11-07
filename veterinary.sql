@@ -29,7 +29,7 @@ CREATE TABLE appointments (
 );
 CREATE TABLE doctors (
     doctorid INT PRIMARY KEY,
-    dfirstname VARCHAR(150),   
+    dfirstname VARCHAR(150),     
     dlastname VARCHAR(150),
     specialization VARCHAR(100),
     contactnumber VARCHAR(20),
@@ -37,81 +37,81 @@ CREATE TABLE doctors (
 );
 
 CREATE TABLE invoices (
-    invoiceid INT PRIMARY KEY,
-    appointid INT,
-    totalamount DECIMAL(10,2),
-    paymentdate TIME,
-    FOREIGN KEY (appointid) REFERENCES appointments(appointid)
-);
+        invoiceid INT PRIMARY KEY,
+        appointid INT,
+        totalamount DECIMAL(10,2),
+        paymentdate TIME,
+        FOREIGN KEY (appointid) REFERENCES appointments(appointid)
+    );
 
 
-CREATE TABLE medicalrecords (
-    recordid INT PRIMARY KEY,
-    animalid INT,
-    recorddate TIMESTAMP,
-    doctorid INT,
-    diagnosis VARCHAR(250),
-    prescription VARCHAR(100),
-    notes TEXT,
-    FOREIGN KEY (animalid) REFERENCES animals(animalid),
-    FOREIGN KEY (doctorid) REFERENCES doctors(doctorid)
-);
+    CREATE TABLE medicalrecords (
+        recordid INT PRIMARY KEY,
+        animalid INT,
+        recorddate TIMESTAMP,
+        doctorid INT,
+        diagnosis VARCHAR(250),
+        prescription VARCHAR(100),
+        notes TEXT,
+        FOREIGN KEY (animalid) REFERENCES animals(animalid),
+        FOREIGN KEY (doctorid) REFERENCES doctors(doctorid)
+    );
 
-INSERT INTO owners (ownerid, ofirstname, olastname, address, phone, email) VALUES
-(1, 'Juan', 'Dela Cruz', '123 Narra St, Lipa City', '09171234567', 'juan.dc@example.com'),
-(2, 'Ben', 'Reyes', '456 Manga Ave, Batangas City', '09181234567', 'ben.reyes@example.com'),
-(3, 'Carlos', 'Ramiro', '789 Monimento Rd, Tanauan', '09191234567', 'carlos.ramiro@example.com'),
-(4, 'Shai', 'Lopez', '321 Putol St, Lipa City', '09201234567', 'shai.lopez@example.com'),
-(5, 'Ron', 'Garcia', '654 Malaya Ave, Batangas City', '09211234567', 'ron.garcia@example.com'),
-(6, 'Maria', 'Torres', '987 Malvar St, Tanauan', '09221234567', 'maria.torres@example.com'),
-(7, 'Miguel', 'Ramos', '159 Mabini St, Lipa City', '09231234567', 'miguel.ramos@example.com'),
-(8, 'Sofia', 'Fernandez', '753 Rizal Ave, Batangas City', '09241234567', 'sofia.fernandez@example.com'),
-(9, 'Diego', 'Martinez', '852 Bonifacio Rd, Tanauan', '09251234567', 'diego.martinez@example.com'),
-(10, 'Conan', 'Gomez', '951 Katipunan St, Lipa City', '09261234567', 'conan.gomez@example.com');
-INSERT INTO animals (animalid, name, species, breed, dateofbirth, gender, color, ownerid) VALUES
-(1, 'Taeri', 'Dog', 'Golden Retriever', '2018-05-12', 'Female', 'Yellow', 1),
-(2, 'Browny', 'Dog', 'Chow chow', '2019-03-08', 'Male', 'Brown', 2),
-(3, 'Whiskers', 'Cat', 'Persian', '2020-07-22', 'Male', 'White', 3),
-(4, 'Simba', 'Cat', 'Persian', '2017-11-30', 'Female', 'White', 4),
-(5, 'Leo', 'Dog', 'German Shepherd', '2016-09-15', 'Male', 'Black', 5),
-(6, 'Carrot', 'Dog', 'Shitsu', '2021-01-10', 'Male', 'Gray', 6),
-(7, 'Mawi', 'Dog', 'Poodle', '2018-04-05', 'Female', 'Cream', 7),
-(8, 'Yanah', 'Cat', 'Persian', '2019-06-18', 'Male', 'Brown', 8),
-(9, 'Coco', 'Cat', 'Persian', '2020-02-25', 'Female', 'Yellow and Gray',9),
-(10, 'Buddy', 'Dog', 'Golden Retriever', '2015-12-01', 'Male', 'Golden', 10);
-INSERT INTO appointments (appointid, animalid, appointdate, reason) VALUES
-(1, 1, '2025-01-10', 'Annual check-up'),
-(2, 3, '2025-01-12', 'Vaccination'),
-(3, 3, '2025-01-15', 'cold  treatment'),
-(4, 3, '2025-01-18', 'diarrhea'),
-(5, 5, '2025-01-20', 'Colds'),
-(6, 6, '2025-01-22', 'Fever'),
-(7, 7, '2025-01-25', 'Follow-up visit'),
-(8, 8, '2025-01-28', 'Eye check-up'),
-(9, 9, '2025-01-30', 'Medical'),
-(10, 10, '2025-02-02', 'X-ray');
-INSERT INTO doctors (doctorid, firstname, lastname, specialization, contactnumber, email) VALUES
-(1, 'Maria', 'Santos', 'General Veterinarian', '987-654-3210', 'maria@example.com'),
-(2, 'Antonio', 'Gonzales', 'Feline Specialist', '555-123-4567', 'antonio@example.com'),
-(3, 'Felipe', 'Luna', 'Orthopedic Specialist', '111-222-3333', 'felipe@example.com'),
-(4, 'Sofia', 'Reyes', 'Dermatology Specialist', '999-888-7777', 'sofia@example.com'),
-(5, 'Luis', 'Torres', 'Surgery Specialist', '123-555-7777', 'luis@example.com'),
-(6, 'Carmen', 'Fernandez', 'Ophthalmology Specialist', '333-222-1111', 'carmen@example.com'),
-(7, 'Miguel', 'Ramirez', 'Exotic Animal Specialist', '444-666-8888', 'miguel@example.com'),
-(8, 'Isabella', 'Cruz', 'Dental Specialist', '777-444-2222', 'isabella@example.com'),
-(9, 'Javier', 'Morales', 'Cardiology Specialist', '666-999-0000', 'javier@example.com'),
-(10, 'Elena', 'Navarro', 'Emergency Care Specialist', '888-777-6666', 'elena@example.com');
-INSERT INTO invoices (invoiceid, appointid,totalamount, paymentdate) VALUES
-(1, 1, 50.00, '09:30:00'),
-(2, 2, 75.00, '14:15:00'),
-(3, 3, 100.00, '11:00:00'),
-(4, 4, 200.00, '13:45:00'),
-(5, 5, 80.00, '10:30:00'),
-(6, 6, 30.00, '15:00:00'),
-(7, 7, 75.00, '09:15:00'),
-(8, 8, 150.00, '16:30:00'),
-(9, 9, 60.00, '14:45:00'),
-(10, 10, 40.00, '11:30:00');
+    INSERT INTO owners (ownerid, ofirstname, olastname, address, phone, email) VALUES
+    (1, 'Juan', 'Dela Cruz', '123 Narra St, Lipa City', '09171234567', 'juan.dc@example.com'),
+    (2, 'Ben', 'Reyes', '456 Manga Ave, Batangas City', '09181234567', 'ben.reyes@example.com'),
+    (3, 'Carlos', 'Ramiro', '789 Monimento Rd, Tanauan', '09191234567', 'carlos.ramiro@example.com'),
+    (4, 'Shai', 'Lopez', '321 Putol St, Lipa City', '09201234567', 'shai.lopez@example.com'),
+    (5, 'Ron', 'Garcia', '654 Malaya Ave, Batangas City', '09211234567', 'ron.garcia@example.com'),
+    (6, 'Maria', 'Torres', '987 Malvar St, Tanauan', '09221234567', 'maria.torres@example.com'),
+    (7, 'Miguel', 'Ramos', '159 Mabini St, Lipa City', '09231234567', 'miguel.ramos@example.com'),
+    (8, 'Sofia', 'Fernandez', '753 Rizal Ave, Batangas City', '09241234567', 'sofia.fernandez@example.com'),
+    (9, 'Diego', 'Martinez', '852 Bonifacio Rd, Tanauan', '09251234567', 'diego.martinez@example.com'),
+    (10, 'Conan', 'Gomez', '951 Katipunan St, Lipa City', '09261234567', 'conan.gomez@example.com');
+    INSERT INTO animals (animalid, name, species, breed, dateofbirth, gender, color, ownerid) VALUES
+    (1, 'Taeri', 'Dog', 'Golden Retriever', '2018-05-12', 'Female', 'Yellow', 1),
+    (2, 'Browny', 'Dog', 'Chow chow', '2019-03-08', 'Male', 'Brown', 2),
+    (3, 'Whiskers', 'Cat', 'Persian', '2020-07-22', 'Male', 'White', 3),
+    (4, 'Simba', 'Cat', 'Persian', '2017-11-30', 'Female', 'White', 4), 
+    (5, 'Leo', 'Dog', 'German Shepherd', '2016-09-15', 'Male', 'Black', 5),
+    (6, 'Carrot', 'Dog', 'Shitsu', '2021-01-10', 'Male', 'Gray', 6),
+    (7, 'Mawi', 'Dog', 'Poodle', '2018-04-05', 'Female', 'Cream', 7),
+    (8, 'Yanah', 'Cat', 'Persian', '2019-06-18', 'Male', 'Brown', 8),
+    (9, 'Coco', 'Cat', 'Persian', '2020-02-25', 'Female', 'Yellow and Gray',9),
+    (10, 'Buddy', 'Dog', 'Golden Retriever', '2015-12-01', 'Male', 'Golden', 10);
+    INSERT INTO appointments (appointid, animalid, appointdate, reason) VALUES
+    (1, 1, '2025-01-10', 'Annual check-up'),
+    (2, 3, '2025-01-12', 'Vaccination'),
+    (3, 3, '2025-01-15', 'cold  treatment'),
+    (4, 3, '2025-01-18', 'diarrhea'),
+    (5, 5, '2025-01-20', 'Colds'),
+    (6, 6, '2025-01-22', 'Fever'),
+    (7, 6, '2025-01-25', 'Follow-up visit'),
+    (8, 8, '2025-01-28', 'Eye check-up'),
+    (9, 9, '2025-01-30', 'Medical'),
+    (10, 1, '2025-02-02', 'X-ray');
+    INSERT INTO doctors (doctorid, dfirstname, dlastname, specialization, contactnumber, email) VALUES
+    (1, 'Maria', 'Santos', 'General Veterinarian', '987-654-3210', 'maria@example.com'),
+    (2, 'Antonio', 'Gonzales', 'Feline Specialist', '555-123-4567', 'antonio@example.com'),
+    (3, 'Felipe', 'Luna', 'Orthopedic Specialist', '111-222-3333', 'felipe@example.com'),
+    (4, 'Dr.Sofia', 'Reyes', 'Dermatology Specialist', '999-888-7777', 'sofia@example.com'),
+    (5, 'Luis', 'Torres', 'Surgery Specialist', '123-555-7777', 'luis@example.com'),
+    (6, 'Carmen', 'Fernandez', 'Ophthalmology Specialist', '333-222-1111', 'carmen@example.com'),
+    (7, 'Miguel', 'Ramirez', 'Exotic Animal Specialist', '444-666-8888', 'miguel@example.com'),
+    (8, 'Isabella', 'Cruz', 'Dental Specialist', '777-444-2222', 'isabella@example.com'),
+    (9, 'Javier', 'Morales', 'Cardiology Specialist', '666-999-0000', 'javier@example.com'),
+    (10, 'Elena', 'Navarro', 'Emergency Care Specialist', '888-777-6666', 'elena@example.com');
+    INSERT INTO invoices (invoiceid, appointid,totalamount, paymentdate) VALUES
+    (1, 1, 50.00, '09:30:00'),
+    (2, 2, 75.00, '14:15:00'),
+    (3, 3, 100.00, '11:00:00'),
+    (4, 4, 200.00, '13:45:00'),
+    (5, 5, 80.00, '10:30:00'),
+    (6, 6, 30.00, '15:00:00'),
+    (7, 7, 75.00, '09:15:00'),
+    (8, 8, 150.00, '16:30:00'),
+    (9, 9, 60.00, '14:45:00'),
+    (10, 10, 40.00, '11:30:00');
 INSERT INTO medicalrecords (recordid, animalid, recorddate, doctorid, diagnosis, prescription, notes)
 VALUES 
     (1, 1, '2023-01-05 00:00:00', 1, 'Health check', 'N/A', 'Regular checkup, no issue detected'),
@@ -137,8 +137,9 @@ WHERE animalid = (
 );
 
 UPDATE doctors
-SET lastname = 'Reyes-Gonzales'
-WHERE firstname = 'Dr.Sofia';
+SET dlastname = 'Reyes-Gonzales'
+WHERE dfirstname = 'Dr.Sofia';
+
 
 
 SELECT DISTINCT species
@@ -146,6 +147,11 @@ FROM animals;
 
 SELECT SUM(totalamount) AS total_sales
 FROM invoices;
+
+-- Result:
+total_sales
+-----------
+860.00
 
 
 SELECT COUNT(*) AS total_appointments
@@ -156,13 +162,17 @@ WHERE animalid IN (
     WHERE ownerid = (
         SELECT ownerid
         FROM owners
-        WHERE firstname = 'Maria'
+        WHERE ofirstname = 'Maria'
     )
 );
 
+
 SELECT a.name
 FROM animals a
-JOIN appoinments ap ON a.animalid= ap.animalid
+JOIN appointments ap ON a.animalid = ap.animalid
 GROUP BY a.name
-ORDER BY COUNT(ap.appointed) DESC
+ORDER BY COUNT(ap.appointid) DESC
 LIMIT 1;
+
+
+
